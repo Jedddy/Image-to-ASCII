@@ -12,7 +12,7 @@ class ImgToAscii:
 
 
     # Resizes Image and converts to grayscale
-    def convert(self, img): 
+    def convert_img(self, img): 
         self.aspect_ratio = self.base_width / img.size[0]
         self.height = self.aspect_ratio * img.size[1]
         self.img = img.resize((int(self.base_width), int(self.height)))
@@ -24,7 +24,7 @@ class ImgToAscii:
         try:
             # Opens image and converts to RGBA so images without background would work.
             with Image.open(f"./images/{self.img_name}").convert("RGBA") as image:
-                self.im = self.convert(image)
+                self.im = self.convert_img(image)
                 self.pixl = self.im.getdata()
 
             self.newpix = [self.ascii_chars[pix//25] for pix in self.pixl]
