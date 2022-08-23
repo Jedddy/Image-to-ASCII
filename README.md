@@ -6,4 +6,4 @@ Convert Images to ASCII Characters
 3. Check 'converted.txt' to check your converted image!
 
 <br/>
-<img src="https://freeimage.host/i/r0f0Fe" width=500>
+<img src="https://iili.io/r0f0Fe.th.png" alt="r0f0Fe.th.png" border="0">
