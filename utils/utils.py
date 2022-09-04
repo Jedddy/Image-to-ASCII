@@ -6,15 +6,15 @@ class ImgToAscii:
     def __init__(self, img_name, width):
         self.img_name = img_name 
         # ASCII chars. You can change this if you want. first index is black, last index is white.
-        self.ascii_chars = ['#', '#', '%', '%', '$', '$', '^','^', '-', ',', '.']
+        self.ascii_chars = ['  ', '  ', '^^','^^', '--',  '%%', '%%', '$$', '$$', '##', '##']
         # Base width for resizing
         self.base_width = width
 
 
     # Resizes Image and converts to grayscale
     def convert_img(self, img): 
-        self.aspect_ratio = self.base_width / img.size[0]
-        self.height = self.aspect_ratio * img.size[1]
+        self.aspect_ratio = img.size[0] / img.size[1]
+        self.height = self.aspect_ratio * self.base_width
         self.img = img.resize((int(self.base_width), int(self.height)))
         print(f"\nContinuing with size {self.base_width}x{int(self.height)}\n")
         return self.img.convert(mode="L")
