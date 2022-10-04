@@ -26,19 +26,8 @@ class ImgToAscii:
             with Image.open(f"./images/{self.img_name}").convert("RGBA") as image:
                 self.im = self.convert_img(image)
                 self.pixl = self.im.getdata()
-
             self.newpix = [self.ascii_chars[pix//25] for pix in self.pixl]
-
-            self.text = ''
-            self.count = 0
-
-            for i in self.newpix:
-                self.text += i
-                self.count += 1
-                if self.count == self.base_width:
-                    self.text += '\n'
-                    self.count = 0
-            
+            self.text = '\n'.join(["".join(self.newpix[i-self.base_width:i]) for i in range(0, len(self.newpix), self.base_width)])
             with open('converted.txt', 'w') as self.txt:
                 self.txt.write(self.text)
                 print("\033[0;92m" + 'Done! ASCII characters in converted.txt file.' + "\033[0;37m")
